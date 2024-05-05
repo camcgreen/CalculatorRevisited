@@ -12,8 +12,6 @@ The task was to build a simple React Native calculator app in 90 minutes. This r
   - npm install
   - npx expo start
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
-
 ### Calculator Component
 
 #### Description
