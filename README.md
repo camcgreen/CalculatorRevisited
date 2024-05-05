@@ -1,6 +1,6 @@
 # Revisited technical test
 
-![Hero Image](./assets/images/poster.png)
+![Demo GIF](./assets/images/demo.gif)
 
 ### Objective
 
@@ -14,11 +14,6 @@ The task was to build a simple React Native calculator app in 90 minutes. This r
   - See the calculator fits one of the three themes in the ./design folder.
 
 The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
-
-<video width="320" height="240" autoplay loop>
-  <source src="assets/videos/my-video.mp4" type="video/mp4">
-Your browser does not support the video tag.
-</video>
 
 ### Calculator Component
 
