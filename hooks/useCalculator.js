@@ -8,16 +8,15 @@ export const useCalculator = () => {
     if (isInvalidOperation(value, output)) {
       return
     }
-    setOutput(output + value)
+    setOutput((prevOutput) => prevOutput + value)
   }
 
   const deleteLastChar = () => {
-    if (output === '') return
-    setOutput(output.slice(0, -1))
+    setOutput((prevOutput) => prevOutput.slice(0, -1))
   }
 
   const calculate = () => {
-    setOutput(eval(output).toString())
+    setOutput((prevOutput) => eval(prevOutput).toString())
   }
 
   const reset = () => {
