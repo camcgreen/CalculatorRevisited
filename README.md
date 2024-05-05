@@ -1,4 +1,4 @@
-# Revisited technical test
+# Revisited Technical Test
 
 ![Demo GIF](./assets/images/demo.gif)
 
@@ -6,12 +6,11 @@
 
 The task was to build a simple React Native calculator app in 90 minutes. This repo is the version of the app I kept building after the timer expired.
 
-### Tasks
+### Get Up & Running
 
-- Your users should be able to:
-  - See the size of the elements adjust based on their device's screen size.
-  - Perform mathematical operations like addition, subtraction, multiplication, and division
-  - See the calculator fits one of the three themes in the ./design folder.
+- Once you have cloned the repo:
+  - npm install
+  - npx expo start
 
 The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
 
