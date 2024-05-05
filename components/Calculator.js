@@ -93,7 +93,9 @@ const Calculator = () => {
   return (
     <View style={styles.container}>
       <View style={styles.output}>
-        <Text style={styles.outputText}>{output}</Text>
+        <Text style={styles.outputText}>
+          {parseFloat(output).toLocaleString()}
+        </Text>
       </View>
       <View style={styles.input}>
         <View style={styles.row}>
@@ -149,7 +151,6 @@ const styles = StyleSheet.create({
   output: {
     width: '100%',
     marginBottom: 20,
-    // padding: 40,
     padding: 25,
     paddingLeft: 0,
     borderRadius: 10,
