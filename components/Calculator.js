@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { useFonts } from 'expo-font'
 import { OPERATIONS } from '../utils/constants'
 
 const Calculator = () => {
+  const [loaded] = useFonts({
+    'LeagueSpartan-Bold': require('../assets/fonts/LeagueSpartan-Bold.ttf'),
+  })
+
   const [output, setOutput] = useState('0')
   const [operand, setOperand] = useState(null)
   const [operator, setOperator] = useState(null)
@@ -81,46 +86,54 @@ const Calculator = () => {
     ))
   }
 
+  if (!loaded) {
+    return null
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.output}>{output}</Text>
-      <View style={styles.row}>
-        {generateButtons([
-          { value: '7', handler: handlePress },
-          { value: '8', handler: handlePress },
-          { value: '9', handler: handlePress },
-          { value: 'DEL', handler: deletePrevChar },
-        ])}
+      <View style={styles.output}>
+        <Text style={styles.outputText}>{output}</Text>
       </View>
-      <View style={styles.row}>
-        {generateButtons([
-          { value: '4', handler: handlePress },
-          { value: '5', handler: handlePress },
-          { value: '6', handler: handlePress },
-          { value: OPERATIONS.plus, handler: handleOperator },
-        ])}
-      </View>
-      <View style={styles.row}>
-        {generateButtons([
-          { value: '1', handler: handlePress },
-          { value: '2', handler: handlePress },
-          { value: '3', handler: handlePress },
-          { value: OPERATIONS.minus, handler: handleOperator },
-        ])}
-      </View>
-      <View style={styles.row}>
-        {generateButtons([
-          { value: '.', handler: handlePress },
-          { value: '0', handler: handlePress },
-          { value: OPERATIONS.divide, handler: handleOperator },
-          { value: OPERATIONS.multiply, handler: handleOperator },
-        ])}
-      </View>
-      <View style={styles.row}>
-        {generateButtons([
-          { value: 'RESET', handler: clearOutput },
-          { value: '=', handler: calculate },
-        ])}
+      <View style={styles.input}>
+        <View style={styles.row}>
+          {generateButtons([
+            { value: '7', handler: handlePress },
+            { value: '8', handler: handlePress },
+            { value: '9', handler: handlePress },
+            { value: 'DEL', handler: deletePrevChar },
+          ])}
+        </View>
+        <View style={styles.row}>
+          {generateButtons([
+            { value: '4', handler: handlePress },
+            { value: '5', handler: handlePress },
+            { value: '6', handler: handlePress },
+            { value: OPERATIONS.plus, handler: handleOperator },
+          ])}
+        </View>
+        <View style={styles.row}>
+          {generateButtons([
+            { value: '1', handler: handlePress },
+            { value: '2', handler: handlePress },
+            { value: '3', handler: handlePress },
+            { value: OPERATIONS.minus, handler: handleOperator },
+          ])}
+        </View>
+        <View style={styles.row}>
+          {generateButtons([
+            { value: '.', handler: handlePress },
+            { value: '0', handler: handlePress },
+            { value: OPERATIONS.divide, handler: handleOperator },
+            { value: OPERATIONS.multiply, handler: handleOperator },
+          ])}
+        </View>
+        <View style={styles.row}>
+          {generateButtons([
+            { value: 'RESET', handler: clearOutput },
+            { value: '=', handler: calculate },
+          ])}
+        </View>
       </View>
     </View>
   )
@@ -134,50 +147,78 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   output: {
-    fontSize: 40,
     width: '100%',
     marginBottom: 20,
-    paddingTop: 20,
-    paddingBottom: 20,
-    borderRadius: 50,
-    backgroundColor: '#181f32',
+    // padding: 40,
+    padding: 25,
+    paddingLeft: 0,
+    borderRadius: 10,
+    backgroundColor: 'hsl(224, 36%, 15%)',
+  },
+  outputText: {
+    fontSize: 32,
     color: '#fcfdff',
-    textAlign: 'center',
+    textAlign: 'right',
+    fontFamily: 'LeagueSpartan-Bold',
+  },
+  input: {
+    width: '100%',
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: 'hsl(223, 31%, 20%)',
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   button: {
     flex: 1,
     aspectRatio: 1 / 1,
-    margin: 4,
+    margin: 5,
     borderRadius: 10,
-    backgroundColor: '#e9e3d9',
+    backgroundColor: 'hsl(30, 25%, 89%)',
+    shadowColor: 'hsl(28, 16%, 65%)',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   delButton: {
-    backgroundColor: '#647299',
+    backgroundColor: 'hsl(225, 21%, 49%)',
+    shadowColor: 'hsl(224, 28%, 35%)',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
   },
   resetButton: {
-    backgroundColor: '#647299',
+    backgroundColor: 'hsl(225, 21%, 49%)',
+    shadowColor: 'hsl(224, 28%, 35%)',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
     aspectRatio: 2 / 1,
   },
   equalsButton: {
-    backgroundColor: '#d13f30',
+    backgroundColor: 'hsl(6, 63%, 50%)',
+    shadowColor: 'hsl(6, 70%, 34%)',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
     aspectRatio: 2 / 1,
   },
   lightText: {
     color: '#fcfdff',
     fontWeight: 'bold',
     fontSize: 20,
+    fontFamily: 'LeagueSpartan-Bold',
   },
   darkText: {
-    color: '#181f32',
+    color: 'hsl(221, 14%, 31%)',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 32,
+    fontFamily: 'LeagueSpartan-Bold',
   },
 })
 
